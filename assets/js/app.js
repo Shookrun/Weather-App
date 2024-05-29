@@ -13,11 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
             .then(response => response.json())
             .then(json => {
-                if (json.cod === '404') {
-                    alert('City not found');
-                    return;
-                }
-
                 const image = document.querySelector('.weather-box img');
                 const temperature = document.querySelector('.weather-box .temperature');
                 const description = document.querySelector('.weather-box .description');
@@ -32,31 +27,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 description.style.opacity = 0;
 
                 setTimeout(() => {
-                    switch (json.weather[0].main) {
-                        case 'Clear':
-                            image.src = './assets/images/clear.png';
-                            break;
-                        case 'Rain':
-                            image.src = './assets/images/rain.png';
-                            break;
-                        case 'Snow':
-                            image.src = './assets/images/snow.png';
-                            break;
-                        case 'Clouds':
-                            image.src = './assets/images/cloud.png';
-                            break;
-                        case 'Mist':
-                        case 'Haze':
-                            image.src = './assets/images/mist.png';
-                            break;
-                        default:
-                            image.src = './assets/images/cloud.png';
-                    }
+                    if (json.cod === '404') {
+                        image.src = './assets/images/404.png';
+                        temperature.innerHTML = '';
+                        description.innerHTML = 'City not found';
+                        humidity.innerHTML = '';
+                        wind.innerHTML = '';
+                    } else {
+                        switch (json.weather[0].main) {
+                            case 'Clear':
+                                image.src = './assets/images/clear.png';
+                                break;
+                            case 'Rain':
+                                image.src = './assets/images/rain.png';
+                                break;
+                            case 'Snow':
+                                image.src = './assets/images/snow.png';
+                                break;
+                            case 'Clouds':
+                                image.src = './assets/images/cloud.png';
+                                break;
+                            case 'Mist':
+                            case 'Haze':
+                                image.src = './assets/images/mist.png';
+                                break;
+                            default:
+                                image.src = './assets/images/cloud.png';
+                        }
 
-                    temperature.innerHTML = `${json.main.temp.toFixed(1)}°C`;
-                    description.innerHTML = `${json.weather[0].description}`;
-                    humidity.innerHTML = `${json.main.humidity}%`;
-                    wind.innerHTML = `${json.wind.speed} km/h`;
+                        temperature.innerHTML = `${json.main.temp.toFixed(1)}°C`;
+                        description.innerHTML = `${json.weather[0].description}`;
+                        humidity.innerHTML = `${json.main.humidity}%`;
+                        wind.innerHTML = `${json.wind.speed} km/h`;
+                    }
 
                     // Show elements with animation
                     weatherBox.classList.add('show-element');
