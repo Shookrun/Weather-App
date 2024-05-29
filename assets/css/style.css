@@ -28,6 +28,7 @@ video{
     background: purple;
     border-radius: 16px;
     padding: 20px;
+    color: #fff;
 }
 
 .search-box{
@@ -76,4 +77,14 @@ video{
     left: 10px;
     font-size: 28px;
 
+}
+
+.weather-box{
+    text-align: center;
+    margin: 40px 0 ;
+
+}
+
+.weather-box img{
+    width: 60%;
 }
