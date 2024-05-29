@@ -88,3 +88,24 @@ video{
 .weather-box img{
     width: 60%;
 }
+
+.weather-box .temperature{
+    position: relative;
+    font-size: 64px;
+    line-height: 1;
+    font-weight: 700;
+    margin: 20px 0 6px -30px;
+}
+
+
+.weather-box .temperature span{
+    position: absolute;
+    font-size: 24px;
+    margin-left: 4px;
+}
+
+.weather-box .description{
+    font-size: 22px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
