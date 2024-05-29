@@ -109,3 +109,31 @@ video{
     font-weight: 500;
     text-transform: capitalize;
 }
+
+.weather-details{
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+
+}
+
+.weather-details .humidity,.weather-details .wind{
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.weather-details i{
+    font-size: 56px;
+    margin-right: 10px;
+}
+
+
+.weather-details span{
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 500;
+}
